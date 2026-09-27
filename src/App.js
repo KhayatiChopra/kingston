@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 // Placeholder images inspired by Kingston Instagram themes (replace URLs with your actual images)
 const galleryImages = [
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1050&q=80',
+  'https://www.instagram.com/kingston_lawns_banquet/p/Db41gw1xqrF/',
   'https://images.unsplash.com/photo-1486308510493-cb62d6caab73?auto=format&fit=crop&w=1050&q=80',
   'https://images.unsplash.com/photo-1523882457596-4e982ee59e4d?auto=format&fit=crop&w=1052&q=80',
   'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1050&q=80',
