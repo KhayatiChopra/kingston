@@ -1,5 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+
+// Placeholder images inspired by Kingston Instagram themes (replace URLs with your actual images)
+const galleryImages = [
+  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1050&q=80',
+  'https://images.unsplash.com/photo-1486308510493-cb62d6caab73?auto=format&fit=crop&w=1050&q=80',
+  'https://images.unsplash.com/photo-1523882457596-4e982ee59e4d?auto=format&fit=crop&w=1052&q=80',
+  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1050&q=80',
+  'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1050&q=80',
+];
 
 const facilities = [
   { title: 'Luxurious Rooms & Suites', description: 'Comfortable stay with elegant decor and modern amenities.' },
@@ -23,9 +32,19 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
-const KingstonResort = () => {
+const KingstonGallery = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const prevImage = () => {
+    setCurrentIndex((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+  };
+  
+  const nextImage = () => {
+    setCurrentIndex((currentIndex + 1) % galleryImages.length);
+  };
+
   return (
-    <div style={{ fontFamily: 'Poppins, sans-serif', color: '#2c3e50', lineHeight: '1.6' }}>
+    <div style={{ fontFamily: 'Poppins, sans-serif', color: '#2c3e50' }}>
       
       {/* Header */}
       <motion.header 
@@ -33,23 +52,89 @@ const KingstonResort = () => {
         animate={{ opacity: 1 }} 
         transition={{ duration: 1 }}
         style={{
-          backgroundImage: `url('https://lh5.googleusercontent.com/p/AF1QipPcB-oGgAzhAMebfUWr1JNiYsAOBRfRowQcVEOE=s1360-w1360-h1020')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          position: 'relative',
+          backgroundColor: '#34495e',
           height: '60vh',
           display: 'flex',
-          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           color: 'white',
-          textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+          overflow: 'hidden',
         }}
       >
-        <h1 style={{ fontSize: '3.8rem', margin: 0, letterSpacing: '0.12em' }}>Kingston Resort</h1>
-        <p style={{ fontSize: '1.5rem', marginTop: '0.4rem' }}>Kurukshetra, India</p>
+        <motion.img 
+          key={galleryImages[currentIndex]}
+          src={galleryImages[currentIndex]}
+          alt={`Gallery ${currentIndex + 1}`}
+          initial={{ opacity: 0.8 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            top:0,
+            left:0,
+            zIndex: 1,
+            filter: 'brightness(0.6)',
+            userSelect: 'none',
+          }}
+        />
+        <motion.div style={{ position: 'relative', zIndex: 2, textAlign: 'center', maxWidth: '900px', padding: '0 1rem' }}>
+          <h1 style={{ fontSize: '4rem', marginBottom: 10, fontWeight: '700', letterSpacing: '0.15em' }}>Kingston Resort</h1>
+          <p style={{ fontSize: '1.6rem', fontWeight: '500' }}>Kurukshetra, India</p>
+        </motion.div>
+
+        {/* Image Carousel Controls */}
+        <button 
+          onClick={prevImage} 
+          aria-label="Previous Image"
+          style={{
+            position: 'absolute',
+            left: 20,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'rgba(255,255,255,0.3)',
+            border: 'none',
+            borderRadius: '50%',
+            width: 44,
+            height: 44,
+            cursor: 'pointer',
+            zIndex: 3,
+            color:'#34495e',
+            fontSize: '1.5rem',
+            userSelect: 'none',
+          }}
+        >
+          ‹
+        </button>
+        <button 
+          onClick={nextImage} 
+          aria-label="Next Image"
+          style={{
+            position: 'absolute',
+            right: 20,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: 'rgba(255,255,255,0.3)',
+            border: 'none',
+            borderRadius: '50%',
+            width: 44,
+            height: 44,
+            cursor: 'pointer',
+            zIndex: 3,
+            color:'#34495e',
+            fontSize: '1.5rem',
+            userSelect: 'none',
+          }}
+        >
+          ›
+        </button>
       </motion.header>
 
-      {/* What’s Available Section */}
+      {/* Facilities Section */}
       <section style={{ padding: '3rem 1.5rem', maxWidth: 900, margin: 'auto' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 40 }} 
@@ -57,7 +142,7 @@ const KingstonResort = () => {
           transition={{ duration: 0.7 }}
           style={{ textAlign: 'center', fontSize: '2.8rem', marginBottom: '2rem', color: '#34495e' }}
         >
-          What We Offer
+          Facilities & Amenities
         </motion.h2>
 
         <motion.div 
@@ -77,49 +162,63 @@ const KingstonResort = () => {
                 padding: '1.6rem 2rem',
                 boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
                 cursor: 'default',
-                userSelect: 'none'
+                userSelect: 'none',
+                minHeight: 120,
               }}
               whileHover={{ scale: 1.05, boxShadow: '0 12px 40px rgba(0,0,0,0.15)' }}
             >
-              <h3 style={{ color: '#2c3e50' }}>{title}</h3>
-              <p style={{ fontWeight: 500 }}>{description}</p>
+              <h3 style={{ color: '#2c3e50', marginBottom: 8 }}>{title}</h3>
+              <p style={{ fontWeight: 500, fontSize: '1rem' }}>{description}</p>
             </motion.div>
           ))}
         </motion.div>
       </section>
 
-      {/* Booking and Contact Section */}
-      <section style={{ backgroundColor: '#34495e', color: 'white', padding: '3rem 1.5rem' }}>
-        <motion.div 
+      {/* Booking Info Section */}
+      <section style={{ backgroundColor: '#34495e', color: 'white', padding: '3rem 1.5rem', textAlign: 'center' }}>
+        <motion.h2 
           initial={{ opacity: 0, y: 40 }} 
           whileInView={{ opacity: 1, y: 0 }} 
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          style={{ maxWidth: 900, margin: 'auto', textAlign: 'center' }}
+          transition={{ duration: 0.7 }}
+          style={{ marginBottom: '1rem' }}
         >
-          <h2>Host Your Event with Us</h2>
-          <p style={{ fontSize: '1.25rem', fontWeight: '500', maxWidth: 650, margin: '1rem auto' }}>
-            From intimate small party gatherings to lavish wedding events, Kingston Resort offers the perfect venue with outstanding hospitality.
-          </p>
-
-          <a href="tel:+911234567890" style={{ 
-            display: 'inline-block', 
-            marginTop: '20px', 
-            backgroundColor: '#e67e22', 
-            padding: '12px 28px', 
-            borderRadius: '30px', 
-            color: 'white', 
+          Book Your Event
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }} 
+          viewport={{ once: true }}
+          style={{ maxWidth: 600, margin: '0 auto 1.5rem', fontSize: '1.3rem', fontWeight: '500' }}
+        >
+          Whether it’s a small party gathering or a grand wedding event, Kingston Resort is your perfect venue for memorable moments.
+        </motion.p>
+        <motion.a 
+          href="tel:+911234567890" 
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }} 
+          viewport={{ once: true }}
+          style={{
+            display: 'inline-block',
+            backgroundColor: '#e67e22',
+            padding: '14px 34px',
+            borderRadius: '30px',
+            color: 'white',
             fontWeight: '700',
+            fontSize: '1.2rem',
             textDecoration: 'none',
-            fontSize: '1.2rem'
-          }}>
-            Contact Marketing Head: +91 12345 67890
-          </a>
-        </motion.div>
+            boxShadow: '0 4px 12px rgba(230,126,34,0.6)',
+            userSelect: 'none',
+            cursor: 'pointer',
+          }}
+          whileHover={{ scale: 1.05, boxShadow: '0 6px 20px rgba(230,126,34,0.9)' }}
+        >
+          Contact Marketing Head: +91 12345 67890
+        </motion.a>
       </section>
 
-      {/* Google Location */}
-      <section style={{ padding: '3rem 1.5rem' }}>
+      {/* Location Section */}
+      <section style={{ padding: '3rem 1.5rem', maxWidth: 900, margin: 'auto' }}>
         <motion.h2 
           initial={{ opacity: 0, y: 40 }} 
           whileInView={{ opacity:1, y:0 }} 
@@ -130,7 +229,7 @@ const KingstonResort = () => {
           Find Us Here
         </motion.h2>
 
-        <div style={{ maxWidth: 900, margin: 'auto', boxShadow: '0 8px 30px rgba(0,0,0,0.2)', borderRadius: '16px', overflow: 'hidden' }}>
+        <div style={{ width: '100%', borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 30px rgba(0,0,0,0.2)' }}>
           <iframe
             title="Kingston Resort Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.210682899436!2d76.81417531509347!3d29.969482682014504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ef7499dc678c3%3A0x2719fa9a316bed36!2sKurukshetra%2C%20Haryana%20136001%2C%20India!5e0!3m2!1sen!2sus!4v1695805101234!5m2!1sen!2sus"
@@ -154,8 +253,9 @@ const KingstonResort = () => {
       }}>
         © 2026 Kingston Resort, Kurukshetra
       </footer>
+
     </div>
   );
 };
 
-export default KingstonResort;
+export default KingstonGallery;
