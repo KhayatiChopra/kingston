@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/kingston/static/js/main.17a6bfc8.js",
+    "main.js": "/kingston/static/js/main.a0dec9ec.js",
     "index.html": "/kingston/index.html",
-    "main.17a6bfc8.js.map": "/kingston/static/js/main.17a6bfc8.js.map"
+    "main.a0dec9ec.js.map": "/kingston/static/js/main.a0dec9ec.js.map"
   },
   "entrypoints": [
-    "static/js/main.17a6bfc8.js"
+    "static/js/main.a0dec9ec.js"
   ]
 }
