@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 // Placeholder images inspired by Kingston Instagram themes (replace URLs with your actual images)
 const galleryImages = [
-  'https://www.instagram.com/kingston_lawns_banquet/p/Db41gw1xqrF/',
+  '/Hero-Banner-1.png',
   'https://images.unsplash.com/photo-1486308510493-cb62d6caab73?auto=format&fit=crop&w=1050&q=80',
   'https://images.unsplash.com/photo-1523882457596-4e982ee59e4d?auto=format&fit=crop&w=1052&q=80',
   'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1050&q=80',
@@ -232,7 +232,7 @@ const KingstonGallery = () => {
         <div style={{ width: '100%', borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 30px rgba(0,0,0,0.2)' }}>
           <iframe
             title="Kingston Resort Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.210682899436!2d76.81417531509347!3d29.969482682014504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ef7499dc678c3%3A0x2719fa9a316bed36!2sKurukshetra%2C%20Haryana%20136001%2C%20India!5e0!3m2!1sen!2sus!4v1695805101234!5m2!1sen!2sus"
+            src="https://www.google.com/maps/place/Kingston+Banquet+,rooms+And+Event+Center/@30.0071194,76.8851647,17z/data=!4m16!1m9!3m8!1s0x390e46f621b0e389:0xf7165902e0bcc98e!2sKingston+Banquet+,rooms+And+Event+Center!8m2!3d30.0071148!4d76.8877396!9m1!1b1!16s%2Fg%2F11cnx8t1bm!3m5!1s0x390e46f621b0e389:0xf7165902e0bcc98e!8m2!3d30.0071148!4d76.8877396!16s%2Fg%2F11cnx8t1bm?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D"
             width="100%"
             height="400"
             style={{ border: 0 }}
